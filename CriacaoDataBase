@@ -1,0 +1,15 @@
+create database turmac;
+use turmac;
+create table cliente (
+    cod_cli int primary key auto_increment,
+    nome_cli varchar(40) not null,
+    endereco varchar(40) null,
+    cidade varchar(20),
+    cep varchar(8),
+    uf char(2)
+);
+
+select * from cliente;
+insert  into cliente (nome_cli,endereco,cidade,cep,uf) 
+            values ('João pedro','Av. Euzebio,200','São Paulo','01003004','SP');
+update cliente set endereco = 'Av. Euzebio,200' where cod_cli = 1;
