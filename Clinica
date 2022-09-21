@@ -1,0 +1,52 @@
+#Criando database
+Create database Clinica;
+
+#Acessando a tabela
+use Clinica;
+
+#Criando a tabela Ambulatorios
+create table Ambulatorio(
+	nroa int primary key ,
+    andar int not null,
+    capacidade smallint
+);
+
+#Acessando Tabela Ambulatorio
+select * from Ambulatorio;
+
+#Criando tabela Médicos
+create table Medicos(
+	codm int primary key,
+    nome varchar(40) not null,
+    idade smallint not null,
+    especialidade varchar(20),
+    CPF varchar(11),
+    cidade varchar(30),
+    foreign key(fk_nroa) references Ambulatorio(nroa)
+);
+
+create table Pacientes(
+	codp int primary key,
+    nome varchar(30) not null,
+    idade smallint not null,
+    cidade varchar(30),
+    CPF varchar(11),
+    doenca varchar(30) not null
+);
+
+create table Funcionarios(
+	codf int primary key,
+    nome varchar(40) not null,
+    idade smallint,
+    CPF varchar(11),
+    salario numeric(10, 2),
+    cargo varchar(20)
+);
+
+create table Consultas(
+	num_consulta int auto_increment,
+    codm int,
+    codp int,
+    data date auto_increment,
+    hora time auto_increment
+);
