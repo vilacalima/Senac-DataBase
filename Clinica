@@ -5,8 +5,8 @@ Create database Clinica;
 use Clinica;
 
 #Criando a tabela Ambulatorios
-create table Ambulatorio(
-	nroa int primary key ,
+create table Ambulatorios(
+	nroa int primary key auto_increment,
     andar int not null,
     capacidade smallint
 );
@@ -16,32 +16,32 @@ select * from Pacientes;
 
 #Criando tabela Médicos
 create table Medicos(
-	codm int primary key,
+	codm int primary key auto_increment,
     nome varchar(40) not null,
     idade smallint not null,
     especialidade varchar(20),
-    CPF varchar(11),
+    CPF varchar(11) unique,
     cidade varchar(30),
     fk_nroa int,
-    foreign key(fk_nroa) references Ambulatorio(nroa)
+    foreign key(fk_nroa) references Ambulatorios(nroa)
 );
 
 #Criando tabela Pacientes
 create table Pacientes(
-	codp int primary key,
+	codp int primary key auto_increment,
     nome varchar(30) not null,
     idade smallint not null,
     cidade varchar(30),
-    CPF varchar(11),
+    CPF varchar(11) unique,
     doenca varchar(30) not null
 );
 
 #Criando tabela Funcionarios
 create table Funcionarios(
-	codf int primary key,
+	codf int primary key auto_increment,
     nome varchar(40) not null,
     idade smallint,
-    CPF varchar(11),
+    CPF varchar(11) unique,
     salario numeric(10, 2),
     cargo varchar(20)
 );
