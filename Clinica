@@ -12,7 +12,7 @@ create table Ambulatorio(
 );
 
 #Acessando Tabela Ambulatorio
-select * from Ambulatorio;
+select * from Pacientes;
 
 #Criando tabela Médicos
 create table Medicos(
@@ -22,9 +22,11 @@ create table Medicos(
     especialidade varchar(20),
     CPF varchar(11),
     cidade varchar(30),
+    fk_nroa int,
     foreign key(fk_nroa) references Ambulatorio(nroa)
 );
 
+#Criando tabela Pacientes
 create table Pacientes(
 	codp int primary key,
     nome varchar(30) not null,
@@ -34,6 +36,7 @@ create table Pacientes(
     doenca varchar(30) not null
 );
 
+#Criando tabela Funcionarios
 create table Funcionarios(
 	codf int primary key,
     nome varchar(40) not null,
@@ -43,10 +46,14 @@ create table Funcionarios(
     cargo varchar(20)
 );
 
+#Criando tabela Consultas
 create table Consultas(
-	num_consulta int auto_increment,
+	num_consulta int auto_increment primary key,
     codm int,
-    codp int,
-    data date auto_increment,
-    hora time auto_increment
+    data date,
+    hora time,
+    fk_codm int,
+    fk_codp int,
+    foreign key(fk_codm) references Medicos(codm),
+    foreign key(fk_codp) references Pacientes(codp)
 );
