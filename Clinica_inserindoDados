@@ -1,3 +1,6 @@
+#Inserindo dados na tabela de ambulatório
+insert into Ambulatorios(andar, capacidade) values(1, 30),(1,50),(2,40),(2,25),(2,55);
+
 #Inserindo dados na tabela Médico
 insert into Medicos(nome, idade, especialidade, CPF, cidade) 
 			values("João", 40, "ortopedia", 10101010101, "florianopolis");
