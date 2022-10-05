@@ -21,4 +21,4 @@ delete from consultas where hora >='19:00';
 delete from paciente where doenca like 'cancer' or idade <=10;
 
 #Os médicos que residem em Biguacu e Palhoca deixaram a clínica
-delete from medicos where cidade like 'Biguacu' or cidade like 'Palhoca';
+delete from medicos where cidade in ('Biguacu', 'Palhoca');
