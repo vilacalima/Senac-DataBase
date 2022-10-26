@@ -56,8 +56,13 @@ select customer.customer_id as Codigo, customer.first_name as Nome, customer.las
 						from customer inner join address on customer.customer_id = address.address_id;
                         
                         
-#nome do cliente e endereço;
-create view lista_cliente as select customer.customer_id as Codigo, customer.first_name as Nome, customer.last_name as Sobrenome, address.address as Endereco, address.district as bairro
+#cria uma view fazendo um select e tras os campos customer_id, first_name, last_name, address e district e muda os nomes da propriedade
+create view lista_cliente as select customer.customer_id as Codigo, customer.first_name as Nome, customer.last_name as Sobrenome, address.address as Endereco, address.district as Bairro
 						from customer inner join address on customer.customer_id = address.address_id;
-                        
-select*from lista_cliente;
+#cria uma view fazendo um select e tras os campos customer_id, first_name, last_name, address e district e muda os nomes da propriedade e concatenando o nome com o sobrenome
+create view lista_cliente2 as select customer.customer_id as Codigo, 
+							concat(customer.first_name,' ', customer.last_name) as Nome, 
+                            address.address as Endereco, 
+                            address.district as Bairro
+							from customer inner join address on customer.customer_id = address.address_id;
+select*from lista_cliente2;
